@@ -1,8 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:form_validation_provider/screen/form_page.dart';
+import 'package:form_validation_provider/validation_provider.dart';
+import 'package:provider/provider.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp(
+    ChangeNotifierProvider(
+      create: (_) => ValidationProvider(),
+      child: const MyApp(),
+    ),
+  );
 }
 
 class MyApp extends StatelessWidget {
@@ -16,7 +23,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
       ),
-      home: const FormPage(),
+      home: FormPage(),
     );
   }
 }
